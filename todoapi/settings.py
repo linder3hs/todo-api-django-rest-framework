@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_twilio',
     'tasks.apps.TasksConfig',
     'authapp.apps.AuthappConfig',
     'tasks_viewset.apps.TasksViewsetConfig',
@@ -146,7 +147,17 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 100,
     "DEFAULT_FILTER_BACKENDS": [
         'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        'rest_framework.throttling.AnonRateThrottle', # anonimos
+        'rest_framework.throttling.UserRateThrottle', # usuarios logueados
+        'rest_framework.throttling.ScopedRateThrottle'
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        'anon': '10000/day',
+        'user': '10000/day',
+        'generate_code': '1/minute'
+    }
 }
 
 SIMPLE_JWT = {
