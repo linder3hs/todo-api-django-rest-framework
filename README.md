@@ -59,3 +59,31 @@ INSTALLED_APPS = [
     'tasks.apps.TasksConfig',
 ]
 ```
+
+```text
+Services
+Id
+Name
+Description
+Logo 
+
+Payment_user
+Id
+User_id
+Month_id
+Servide_id
+Amount
+PaymentDate
+ExpirationDate 
+
+Expired_payments
+Id
+Pay_user_id
+Penalty_fee_amount
+
+User
+- Id
+- Email
+- Username
+- Password 
+```

@@ -5,10 +5,12 @@ from rest_framework.mixins import RetrieveModelMixin
 from rest_framework.response import Response
 from twilio.rest import Client
 import random
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_throttles(self):
         if self.action == "update":
