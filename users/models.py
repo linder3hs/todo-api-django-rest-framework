@@ -2,6 +2,16 @@ from django.db import models
 
 
 class User(models.Model):
+    """
+    fields:
+    --------------------
+    username: string
+    password: string
+    realname: string
+    is_verify: bool
+    code: string
+    created_at: datetime
+    """
     username = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     realname = models.CharField(max_length=100)
@@ -11,4 +21,10 @@ class User(models.Model):
 
     class Meta:
         db_table = "users"
-    
+
+    # def get_user(self, id: int) -> models.Model:
+    #     """
+    #     @param id: int
+    #     @rtype: object
+    #     """
+    #     pass
